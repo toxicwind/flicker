@@ -34,8 +34,6 @@ import (
 	"go.woodpecker-ci.org/woodpecker/v3/cli/lint"
 	"go.woodpecker-ci.org/woodpecker/v3/pipeline"
 	"go.woodpecker-ci.org/woodpecker/v3/pipeline/backend"
-	"go.woodpecker-ci.org/woodpecker/v3/pipeline/backend/docker"
-	"go.woodpecker-ci.org/woodpecker/v3/pipeline/backend/kubernetes"
 	"go.woodpecker-ci.org/woodpecker/v3/pipeline/backend/local"
 	backend_types "go.woodpecker-ci.org/woodpecker/v3/pipeline/backend/types"
 	"go.woodpecker-ci.org/woodpecker/v3/pipeline/frontend/builder"
@@ -54,12 +52,9 @@ var Command = &cli.Command{
 	Usage:     "execute a local pipeline",
 	ArgsUsage: "[path/to/.woodpecker.yaml]",
 	Action:    run,
-	Flags:     slices.Concat(flags, docker.Flags, kubernetes.Flags, local.Flags),
 }
 
 var backends = []backend_types.Backend{
-	kubernetes.New(),
-	docker.New(),
 	local.New(),
 }
 
