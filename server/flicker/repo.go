@@ -49,6 +49,7 @@ func EnsureRepoAndUser(_store store.Store) (*model.Repo, *model.User, error) {
 	repo, err := _store.GetRepoName(FlickerRepoFullName)
 	if err != nil {
 		repo = &model.Repo{
+			ForgeID:   1, // local forge, created by setupForgeService
 			UserID:    user.ID,
 			Owner:     "flicker",
 			Name:      "jobs",

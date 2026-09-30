@@ -112,6 +112,7 @@ func (s *JobSpec) ToYAML() ([]byte, error) {
 	}
 
 	pipeline := map[string]any{
+		"skip_clone": true,
 		"steps": map[string]any{
 			s.stepName(): step,
 		},
