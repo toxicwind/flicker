@@ -21,8 +21,6 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-	"net/http/httputil"
-	"net/url"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -43,7 +41,6 @@ import (
 	"go.woodpecker-ci.org/woodpecker/v3/server/router"
 	"go.woodpecker-ci.org/woodpecker/v3/server/router/middleware"
 	"go.woodpecker-ci.org/woodpecker/v3/server/store"
-	"go.woodpecker-ci.org/woodpecker/v3/server/web"
 	"go.woodpecker-ci.org/woodpecker/v3/shared/logger"
 	"go.woodpecker-ci.org/woodpecker/v3/version"
 )
@@ -150,28 +147,11 @@ func run(ctx context.Context, c *cli.Command) error {
 		return nil
 	})
 
-	proxyWebUI := c.String("www-proxy")
-	var webUIServe func(w http.ResponseWriter, r *http.Request)
-
-	if proxyWebUI == "" {
-		webEngine, err := web.New()
-		if err != nil {
-			log.Error().Err(err).Msg("failed to create web engine")
-			return err
-		}
-		webUIServe = webEngine.ServeHTTP
-	} else {
-		origin, _ := url.Parse(proxyWebUI)
-
-		director := func(req *httputil.ProxyRequest) {
-			req.Out.Header.Add("X-Forwarded-Host", req.Out.Host)
-			req.Out.Header.Add("X-Origin-Host", origin.Host)
-			req.Out.URL.Scheme = origin.Scheme
-			req.Out.URL.Host = origin.Host
-		}
-
-		proxy := &httputil.ReverseProxy{Rewrite: director}
-		webUIServe = proxy.ServeHTTP
+	// Flicker: the multi-user web UI is stripped. Unmatched routes get a
+	// minimal flicker-branded landing page; the HTTP API is the interface.
+	webUIServe := func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		fmt.Fprint(w, `<!doctype html><html><head><title>flicker</title></head><body><h1>flicker</h1><p>The ranch build daemon. API docs: <code>POST /api/jobs</code></p></body></html>`)
 	}
 
 	// setup the server and start the listener
