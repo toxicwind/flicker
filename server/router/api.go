@@ -252,6 +252,16 @@ func apiRoutes(e *gin.RouterGroup) {
 
 		apiBase.POST("/hook", api.PostHook)
 
+		// Flicker direct-job API (no auth: single-tenant build daemon).
+		jobs := apiBase.Group("/jobs")
+		{
+			jobs.POST("", api.SubmitJob)
+			jobs.GET("", api.ListJobs)
+			jobs.GET("/:id", api.GetJob)
+			jobs.GET("/:id/logs", api.GetJobLogs)
+		}
+		apiBase.GET("/health", api.FlickerHealth)
+
 		stream := apiBase.Group("/stream")
 		{
 			stream.GET("/logs/:repo_id/:pipeline/:step_id",

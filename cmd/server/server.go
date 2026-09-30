@@ -38,6 +38,7 @@ import (
 
 	"go.woodpecker-ci.org/woodpecker/v3/server"
 	cron_scheduler "go.woodpecker-ci.org/woodpecker/v3/server/cron"
+	"go.woodpecker-ci.org/woodpecker/v3/server/flicker"
 	"go.woodpecker-ci.org/woodpecker/v3/server/metric"
 	"go.woodpecker-ci.org/woodpecker/v3/server/router"
 	"go.woodpecker-ci.org/woodpecker/v3/server/router/middleware"
@@ -119,6 +120,15 @@ func run(ctx context.Context, c *cli.Command) error {
 	if err != nil {
 		return fmt.Errorf("can't setup globals: %w", err)
 	}
+
+	// Flicker: init direct-job service (cache, synthetic repo/user, watcher).
+	if err := flicker.Init(); err != nil {
+		return fmt.Errorf("flicker init: %w", err)
+	}
+	if _, _, err := flicker.EnsureRepoAndUser(_store); err != nil {
+		return fmt.Errorf("flicker repo setup: %w", err)
+	}
+	flicker.StartCompletionWatcher(ctx, _store)
 
 	// wait for all services until one do stops with an error
 	serviceWaitingGroup := errgroup.Group{}
