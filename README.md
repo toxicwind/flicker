@@ -2,6 +2,11 @@
 
 > Part of [**the ranch**](https://github.com/toxicwind/ranch) — the whole inference estate, one map.
 
+> **Retired 2026-09-30.** Flicker is no longer supervised or running on yote.
+> Port `:25148` is now served by `mbx-cache` (the mise remote task cache);
+> nothing listens on `:25240`. The committed binaries in `bin/` and the state
+> dir `/home/toxic/flicker/` remain as artifacts.
+
 Flicker is the estate's local-only build daemon: a Woodpecker v3 Go fork stripped down to direct job execution with content-hash caching. It replaced the old Python `buildsrv` daemon (briefly and mistakenly renamed "brand" on 2026-09-30 — that name is gone) on the same port, as a drop-in replacement.
 
 No containers, no remote forges, no auth — single-tenant daemon that runs jobs through bash login shells (so mise toolchains resolve) and returns `CACHED` when an identical job spec was already run.
@@ -37,12 +42,14 @@ Identical job specs (command, workdir, sorted env, cache key, sorted artifacts) 
 
 ## Layout
 
-- `ranch/flicker/` — this source (Woodpecker v3 fork, `flicker/bin/` holds committed binaries)
-- `/home/toxic/.local/bin/flicker` — the CLI
-- `/home/toxic/flicker/` — state on yote
-- Ports: `:25148` HTTP API, `:25240` gRPC
+- This repo root — the Woodpecker v3 fork (`bin/` holds committed binaries: `flicker-server`, `flicker-agent`, `flicker`)
+- `/home/toxic/.local/bin/flicker` — the CLI (on yote)
+- `/home/toxic/flicker/` — state dir on yote (legacy, from when flicker ran)
+- `pitchfork.d/flicker.toml` — the former supervisor manifest (retired; kept for reference)
 
-Pitchfork supervises `sovereign/flicker` (server) and `sovereign/flicker-agent` (local execution agent).
+Flicker is retired (2026-09-30): nothing is supervised or running on yote,
+port `:25148` is now served by `mbx-cache` (mise remote task cache), and
+nothing listens on `:25240`.
 
 ## History
 
@@ -50,3 +57,5 @@ Pitchfork supervises `sovereign/flicker` (server) and `sovereign/flicker-agent` 
 - 2026-09-30 00:05: renamed to `brand` (bad name, acknowledged).
 - 2026-09-30 01:54: deleted from the tree in an unrelated commit.
 - Same night: Flicker (this fork) cut over as the live replacement. All `brand`/`branding` folders removed 2026-10-02.
+- 2026-09-30 (later the same night): retired — `:25148` handed to `mbx-cache`
+  (mise remote task cache); flicker no longer supervised or running.
