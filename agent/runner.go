@@ -118,9 +118,10 @@ func (r *Runner) Run(runnerCtx context.Context) error {
 
 	// Workflow execution context.
 	// This context is the SINGLE source of truth for cancellation.
-	workflowCtx, _ := context.WithTimeout(ctxMeta, timeout) //nolint:govet
+	workflowCtx, cancelTimeout := context.WithTimeout(ctxMeta, timeout)
 	workflowCtx, cancelWorkflowCtx := context.WithCancelCause(workflowCtx)
 	defer cancelWorkflowCtx(nil)
+	defer cancelTimeout()
 
 	// Add sigterm support for internal context.
 	// Required to be able to terminate the running workflow by external signals.
