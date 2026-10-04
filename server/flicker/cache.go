@@ -40,9 +40,9 @@ type CachedResult struct {
 // Cache is the flicker content-hash cache. Successful jobs are indexed by
 // their spec hash; an identical resubmission returns CACHED without running.
 type Cache struct {
-	mu    sync.RWMutex
-	dir   string // <root>/cache
-	index string // <root>/cache/index.json
+	mu     sync.RWMutex
+	dir    string // <root>/cache
+	index  string // <root>/cache/index.json
 	byHash map[string]*CachedResult
 }
 

@@ -21,8 +21,8 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	forge_types "go.woodpecker-ci.org/woodpecker/v3/server/forge/types"
 	"go.woodpecker-ci.org/woodpecker/v3/server/forge/local"
+	forge_types "go.woodpecker-ci.org/woodpecker/v3/server/forge/types"
 	"go.woodpecker-ci.org/woodpecker/v3/server/model"
 	"go.woodpecker-ci.org/woodpecker/v3/server/store"
 	"go.woodpecker-ci.org/woodpecker/v3/version"

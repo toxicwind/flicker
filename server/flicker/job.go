@@ -103,8 +103,8 @@ func (s *JobSpec) ToYAML() ([]byte, error) {
 	env["FLICKER_JOB_NAME"] = s.stepName()
 
 	step := map[string]any{
-		"image":      "bash",
-		"commands":   []string{s.command()},
+		"image":       "bash",
+		"commands":    []string{s.command()},
 		"environment": env,
 	}
 	if s.Workdir != "" {

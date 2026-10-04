@@ -47,13 +47,13 @@ type jobResponse struct {
 
 func toJobResponse(p *model.Pipeline) *jobResponse {
 	r := &jobResponse{
-		ID:      p.ID,
-		Number:  p.Number,
-		Status:  string(p.Status),
-		Created: p.Created,
-		Started: p.Started,
+		ID:       p.ID,
+		Number:   p.Number,
+		Status:   string(p.Status),
+		Created:  p.Created,
+		Started:  p.Started,
 		Finished: p.Finished,
-		Message: p.Message,
+		Message:  p.Message,
 	}
 	if p.Started > 0 && p.Finished > 0 {
 		r.DurationMs = (p.Finished - p.Started) * 1000
@@ -198,10 +198,10 @@ func FlickerHealth(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"ok":        true,
-		"service":   "flicker",
-		"time":      time.Now().UTC().Format(time.RFC3339),
-		"running":   len(active),
-		"cache":     flicker.CacheStats(),
+		"ok":      true,
+		"service": "flicker",
+		"time":    time.Now().UTC().Format(time.RFC3339),
+		"running": len(active),
+		"cache":   flicker.CacheStats(),
 	})
 }

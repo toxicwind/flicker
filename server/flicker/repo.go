@@ -36,9 +36,9 @@ func EnsureRepoAndUser(_store store.Store) (*model.Repo, *model.User, error) {
 	user, err := _store.GetUserByLogin(0, FlickerUserLogin)
 	if err != nil {
 		user = &model.User{
-			Login:  FlickerUserLogin,
-			Email:  "flicker@localhost",
-			Admin:  true,
+			Login: FlickerUserLogin,
+			Email: "flicker@localhost",
+			Admin: true,
 		}
 		if err := _store.CreateUser(user); err != nil {
 			return nil, nil, fmt.Errorf("flicker: create user: %w", err)
@@ -79,16 +79,16 @@ func NewPipeline(repo *model.Repo, user *model.User, spec *JobSpec, hash string)
 		name = "flicker job"
 	}
 	return &model.Pipeline{
-		RepoID:   repo.ID,
-		Event:    model.EventManual,
-		Commit:   hash[:12], // content hash as the "commit"
-		Branch:   "main",
-		Ref:      "refs/heads/main",
-		Message:  fmt.Sprintf("flicker: %s", name),
-		Author:   user.Login,
-		Email:    user.Email,
-		Sender:   user.Login,
-		Avatar:   "",
+		RepoID:    repo.ID,
+		Event:     model.EventManual,
+		Commit:    hash[:12], // content hash as the "commit"
+		Branch:    "main",
+		Ref:       "refs/heads/main",
+		Message:   fmt.Sprintf("flicker: %s", name),
+		Author:    user.Login,
+		Email:     user.Email,
+		Sender:    user.Login,
+		Avatar:    "",
 		Timestamp: time.Now().UTC().Unix(),
 		AdditionalVariables: map[string]string{
 			"FLICKER_JOB_HASH": hash,
