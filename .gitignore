@@ -57,3 +57,13 @@ docs/openapi.json
 
 # Removed once v3.0.x is minimum version to be touched
 docs/swagger.json
+
+### SECRET GUARD (2026-10-22) ###
+# Retired flicker/woodpecker secrets live in the secretsmith keyring
+# (FLICKER_AGENT_SECRET / FLICKER_GRPC_SECRET). Never commit these locally.
+*.creds
+*.credentials
+.credentials
+*.secret
+woody-pecker*
+*.woodpecker
