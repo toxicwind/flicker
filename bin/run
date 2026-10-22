@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# flicker — retired local-only build daemon (Woodpecker v3 Go fork). bin/run.
+#
+# Primary operation: run the local build-dispatch daemon (bin/flicker-server)
+# that executes job specs through bash login shells with content-hash caching.
+# RETIRED 2026-09-30 (port :25148 now served by mbx-cache; see README).
+# This rig surfaces the daemon + committed binaries without starting anything.
+#
+# Usage:
+#   bin/run            status of the daemon + committed binaries (fast)
+#   bin/run build      go build the server/agent via Makefile
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+echo "== flicker run: build daemon status =="
+echo "status: RETIRED 2026-09-30 (port :25148 now served by mbx-cache; see README)"
+have=0
+for b in bin/flicker bin/flicker-agent bin/flicker-server; do
+  if [ -x "$b" ]; then echo "  OK $b ($(du -h "$b" | cut -f1))"; have=$((have+1)); else echo "  MISSING $b"; fi
+done
+echo "committed binaries present: $have/3"
+if [ "${1:-}" = "build" ]; then
+  echo "== flicker run: build (make) =="
+  exec make build
+fi

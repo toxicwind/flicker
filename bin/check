@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# flicker — retired local-only build daemon. bin/check.
+#
+# Fast self-test (PASS/FAIL), no build:
+#   1. Committed server/agent/flicker binaries are present + executable.
+#   2. go.mod present (Go module well-formed).
+#   3. pitchfork.d/flicker.toml supervision fragment present.
+#   4. Makefile build/test targets exist.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+echo "== flicker check: start =="
+ok=1
+for b in bin/flicker bin/flicker-agent bin/flicker-server; do
+  if [ -x "$b" ]; then echo "OK: $b executable"; else echo "FAIL: $b not executable"; ok=0; fi
+done
+[ -f go.mod ] && echo "OK: go.mod present" || { echo "FAIL: go.mod missing"; ok=0; }
+[ -f pitchfork.d/flicker.toml ] && echo "OK: pitchfork.d/flicker.toml present" || echo "WARN: supervision fragment missing"
+for t in build test lint; do
+  grep -qE "^$t:" Makefile && echo "OK: make $t target" || { echo "FAIL: make $t target missing"; ok=0; }
+done
+echo "FLICKER CHECK:"; [ "$ok" = 1 ] && echo "PASS" || echo "FAIL"
+exit $((ok ? 0 : 1))
