@@ -1,0 +1,225 @@
+{
+  "product": "flicker",
+  "path": "/home/toxic/pens/ranch/products/flicker",
+  "files": 877,
+  "detected_at": "2026-10-30T06:11:06.778288Z",
+  "env_vars": {
+    "ANOTHER_CUSTOM": [
+      "pipeline/frontend/builder/builder_test.go"
+    ],
+    "AgentID": [
+      "e2e/setup/agent.go",
+      "e2e/setup/wait.go"
+    ],
+    "CI_COMMIT_AUTHOR_AVATAR": [
+      "pipeline/frontend/yaml/linter/linter_test.go"
+    ],
+    "CI_COMMIT_BRANCH": [
+      "pipeline/frontend/yaml/linter/schema/schema.json"
+    ],
+    "CI_COMMIT_MESSAGE": [
+      "pipeline/frontend/builder/builder_test.go",
+      "pipeline/frontend/metadata/fuzz_test.go"
+    ],
+    "CI_COMMIT_PRERELEASE": [
+      "pipeline/frontend/yaml/linter/linter_test.go"
+    ],
+    "CI_COMMIT_SHA": [
+      "e2e/scenarios/depends_on_ordering_test.go"
+    ],
+    "CI_REPO_DEFAULT_BRANCH": [
+      "pipeline/frontend/yaml/constraint/constraint_test.go",
+      "pipeline/frontend/yaml/types/container_test.go"
+    ],
+    "CI_REPO_NAME": [
+      "pipeline/frontend/builder/builder_test.go"
+    ],
+    "CUSTOM_VAR": [
+      "pipeline/frontend/builder/builder_test.go"
+    ],
+    "DummyPipeline": [
+      "e2e/scenarios/agent_routing_test.go",
+      "e2e/scenarios/cancel_test.go",
+      "e2e/scenarios/concurrency_test.go",
+      "e2e/scenarios/depends_on_ordering_test.go",
+      "e2e/scenarios/gated_test.go",
+      "e2e/scenarios/infra_test.go",
+      "e2e/scenarios/matrix_test.go",
+      "e2e/scenarios/restart_test.go",
+      "e2e/scenarios/suite_test.go"
+    ],
+    "Fixtures": [
+      "e2e/scenarios/agent_routing_test.go",
+      "e2e/scenarios/cancel_test.go",
+      "e2e/scenarios/concurrency_test.go",
+      "e2e/scenarios/depends_on_ordering_test.go",
+      "e2e/scenarios/gated_test.go",
+      "e2e/scenarios/infra_test.go",
+      "e2e/scenarios/matrix_test.go",
+      "e2e/scenarios/restart_test.go",
+      "e2e/scenarios/suite_test.go",
+      "e2e/setup/server.go"
+    ],
+    "GO_VERSION": [
+      "e2e/scenarios/matrix_test.go",
+      "pipeline/frontend/builder/builder_test.go",
+      "pipeline/frontend/metadata/fuzz_test.go"
+    ],
+    "GRPCAddr": [
+      "e2e/scenarios/agent_routing_test.go",
+      "e2e/scenarios/cancel_test.go",
+      "e2e/scenarios/concurrency_test.go",
+      "e2e/scenarios/depends_on_ordering_test.go",
+      "e2e/scenarios/gated_test.go",
+      "e2e/scenarios/infra_test.go",
+      "e2e/scenarios/matrix_test.go",
+      "e2e/scenarios/restart_test.go",
+      "e2e/scenarios/suite_test.go"
+    ],
+    "HELLO_IMAGE": [
+      "pipeline/frontend/metadata/substitution_test.go"
+    ],
+    "IMAGE": [
+      "pipeline/frontend/builder/builder_test.go"
+    ],
+    "Manager": [
+      "e2e/scenarios/cancel_test.go"
+    ],
+    "NAME": [
+      "pipeline/frontend/yaml/linter/linter.go"
+    ],
+    "NEWLINE": [
+      "pipeline/frontend/metadata/substitution_test.go"
+    ],
+    "NODE_ENV": [
+      "docs/docusaurus.config.ts"
+    ],
+    "PATH": [
+      "pipeline/backend/common/script_posix_test.go"
+    ],
+    "Queue": [
+      "e2e/scenarios/agent_routing_test.go"
+    ],
+    "Store": [
+      "e2e/scenarios/agent_routing_test.go",
+      "e2e/scenarios/cancel_test.go",
+      "e2e/scenarios/concurrency_test.go",
+      "e2e/scenarios/depends_on_ordering_test.go",
+      "e2e/scenarios/gated_test.go",
+      "e2e/scenarios/infra_test.go",
+      "e2e/scenarios/matrix_test.go",
+      "e2e/scenarios/restart_test.go",
+      "e2e/scenarios/suite_test.go"
+    ],
+    "TAG": [
+      "e2e/scenarios/matrix_test.go",
+      "pipeline/frontend/builder/builder_test.go"
+    ],
+    "VAR": [
+      "pipeline/frontend/metadata/fuzz_test.go"
+    ],
+    "VITE_DEV_PROXY": [
+      "web/vite.config.ts"
+    ],
+    "VITE_DEV_SERVER_HOST": [
+      "web/vite.config.ts"
+    ],
+    "VITE_DEV_USER_SESS_COOKIE": [
+      "web/vite.config.ts"
+    ],
+    "_path": [
+      "web/src/lib/api/client.ts"
+    ],
+    "agentId": [
+      "web/src/lib/api/index.ts"
+    ],
+    "cronId": [
+      "web/src/lib/api/index.ts"
+    ],
+    "file": [
+      ".vscode/launch.json"
+    ],
+    "forge": [
+      "web/src/lib/api/index.ts"
+    ],
+    "forgeId": [
+      "web/src/compositions/useAuthentication.ts",
+      "web/src/lib/api/index.ts"
+    ],
+    "forgeRemoteId": [
+      "web/src/lib/api/index.ts"
+    ],
+    "locale": [
+      "web/src/compositions/useI18n.ts"
+    ],
+    "maxWidth": [
+      "docs/plugins/woodpecker-plugins/src/theme/Icons.tsx"
+    ],
+    "minSecFormat": [
+      "web/src/compositions/useDate.ts"
+    ],
+    "name": [
+      "web/src/lib/api/index.ts"
+    ],
+    "orgId": [
+      "web/src/lib/api/index.ts"
+    ],
+    "owner": [
+      "web/src/lib/api/index.ts"
+    ],
+    "path": [
+      "web/src/lib/api/client.ts"
+    ],
+    "pid": [
+      "web/src/components/repo/pipeline/PipelineLog.test.ts",
+      "web/src/components/repo/pipeline/PipelineStepList.test.ts"
+    ],
+    "pipeline": [
+      "web/src/lib/api/index.ts"
+    ],
+    "pipelineNumber": [
+      "web/src/lib/api/index.ts"
+    ],
+    "query": [
+      "web/src/lib/api/client.ts",
+      "web/src/lib/api/index.ts"
+    ],
+    "registryAddress": [
+      "web/src/lib/api/index.ts"
+    ],
+    "repoId": [
+      "web/src/lib/api/index.ts"
+    ],
+    "requestOrgID": [
+      "e2e/setup/agent.go",
+      "e2e/setup/wait.go"
+    ],
+    "resText": [
+      "web/src/lib/api/client.ts"
+    ],
+    "rootPath": [
+      "web/src/router.ts"
+    ],
+    "secretName": [
+      "web/src/lib/api/index.ts"
+    ],
+    "step": [
+      "web/src/lib/api/index.ts"
+    ],
+    "username": [
+      "web/src/lib/api/index.ts"
+    ],
+    "virtualModuleId": [
+      "web/vite.config.ts"
+    ],
+    "viteDevProxy": [
+      "web/vite.config.ts"
+    ],
+    "viteUserSessCookie": [
+      "web/vite.config.ts"
+    ],
+    "workspaceFolder": [
+      ".vscode/launch.json"
+    ]
+  }
+}
